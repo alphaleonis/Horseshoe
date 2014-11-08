@@ -2,7 +2,7 @@
 
 * [Introduction](#introduction)
 * [Tag Types](#tag-types)
-	* [Module](#Module)
+	* [Module](#module)
 	* [Template Declaration](#template-declaration)
 	* [Substitution](#substitution)
 	* [Conditional Block](#conditional-block)
@@ -32,7 +32,7 @@ Tags are indicated by double curly-braces, much like [Mustache](http://mustache.
 
 There are also block tags with special functions, for example `{{#template}}`. Each such tag starts with a double curly brace followed by the hash sign (`#`) and the keyword denoting the tag. The block is then terminated by a closing tag, much like HTML tags, appearing for example as `{{/template}}`.  
 
-* [Module](#Module)
+* [Module](#module)
 * [Template Declaration](#template-declaration)
 * [Substitution](#substitution)
 * [Conditional Block](#conditional-block)
