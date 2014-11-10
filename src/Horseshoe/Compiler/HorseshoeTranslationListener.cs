@@ -63,9 +63,9 @@ namespace Alphaleonis.Horseshoe.Compiler
          if (context.name == null)
             throw new Exception("No name specified for template.");
 
-         m_writer.WriteLine("class {0} {{", context.name.GetText());
+         m_writer.WriteLine("module {0} {{", context.name.GetText());
          PushIndent();
-         m_writer.WriteLine("static render({0} : {1}) : string {{", VAR_DataContext, context.contextType.GetText());
+         m_writer.WriteLine("function render({0} : {1}) : string {{", VAR_DataContext, context.contextType.GetText());
          PushIndent();
          m_writer.WriteLine("var {0} : string = '';", VAR_TemplateResult);
          m_symbols.PushScope(context);
@@ -105,7 +105,15 @@ namespace Alphaleonis.Horseshoe.Compiler
       private string GetVariableName(HorseshoeParser.ScopeQualifiedIdentifierContext context)
       {
          string variableName = context.id.GetText();
-         if (context.scope != null || !m_symbols.CurrentScope.ContainsSymbol(context.id.GetText()))
+         string scopeName = variableName;
+         if (scopeName != null)
+         {
+            int index = scopeName.IndexOf('.');
+            if (index != -1)
+               scopeName = scopeName.Substring(0, index);
+         }
+
+         if (context.scope != null || !m_symbols.CurrentScope.ContainsSymbol(scopeName))
             variableName = VAR_DataContext + "." + variableName;
          return variableName;
       }
