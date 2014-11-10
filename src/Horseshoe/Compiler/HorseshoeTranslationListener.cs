@@ -65,7 +65,7 @@ namespace Alphaleonis.Horseshoe.Compiler
 
          m_writer.WriteLine("module {0} {{", context.name.GetText());
          PushIndent();
-         m_writer.WriteLine("function render({0} : {1}) : string {{", VAR_DataContext, context.contextType.GetText());
+         m_writer.WriteLine("export function render({0} : {1}) : string {{", VAR_DataContext, context.contextType.GetText());
          PushIndent();
          m_writer.WriteLine("var {0} : string = '';", VAR_TemplateResult);
          m_symbols.PushScope(context);
@@ -77,7 +77,7 @@ namespace Alphaleonis.Horseshoe.Compiler
       public override void ExitTemplateDecl(HorseshoeParser.TemplateDeclContext context)
       {
          FlushBuffer(context.closeTrimStart != null);
-         m_writer.WriteLine("return {0}", VAR_TemplateResult);
+         m_writer.WriteLine("return {0};", VAR_TemplateResult);
          PopIndent();
          m_writer.WriteLine("}");
          PopIndent();
