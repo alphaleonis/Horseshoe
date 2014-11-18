@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
    <Metadata>
-      <Identity Id="213A4B88-7720-4661-A07F-FEC20B51D13B" Version="0.2" Language="en-US" Publisher="Alphaleonis" />
+      <Identity Id="213A4B88-7720-4661-A07F-FEC20B51D13B" Version="0.3.1" Language="en-US" Publisher="Alphaleonis" />
       <DisplayName>Horseshoe</DisplayName>
       <Description xml:space="preserve">A simple compile time TypeScript templating engine, that generates .ts files from .hrs templates.</Description>
-      <Icon>Horseshoe-Icon-32.png</Icon>
+      <Icon>Resources\Package.ico</Icon>
    </Metadata>
    <Installation InstalledByMsi="false">
       <InstallationTarget Version="[12.0,13.0)" Id="Microsoft.VisualStudio.Premium" />

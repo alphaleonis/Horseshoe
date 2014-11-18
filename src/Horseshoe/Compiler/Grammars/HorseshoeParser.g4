@@ -20,7 +20,7 @@ module
    ;
 
 templateDecl 
-   : ignoredContent? OPEN invertTrim=TILDE? HASH TEMPLATE name=simpleIdentifier COLON contextType=qualifiedIdentifier openTrimEnd=TILDE? CLOSE (expression)* OPEN closeTrimStart=TILDE? SLASH TEMPLATE  CLOSE ignoredContent?
+   : ignoredContent? OPEN invertTrim=TILDE? HASH TEMPLATE name=simpleIdentifier (COLON contextTypeName=typeName)? openTrimEnd=TILDE? CLOSE (expression)* OPEN closeTrimStart=TILDE? SLASH TEMPLATE  CLOSE ignoredContent?
    ;
 
 expression  
@@ -63,6 +63,10 @@ scopeQualifiedIdentifier
 qualifiedIdentifier
 	: IDENTIFIER ('.' IDENTIFIER)*
 	;
+
+typeName 
+   : qualifiedIdentifier ('<' typeName '>')? ('[' ']')*
+   ;
 
 simpleIdentifier
 	: IDENTIFIER

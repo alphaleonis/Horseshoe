@@ -23,6 +23,7 @@ namespace Alphaleonis.Horseshoe.Compiler
       private bool m_inModule;
       private bool m_trimLeadingWhitespaceFromBody;
       private bool m_invertTrim;
+      private bool m_hasDataContext;
 
       public string Result
       {
@@ -65,7 +66,16 @@ namespace Alphaleonis.Horseshoe.Compiler
 
          m_writer.WriteLine("module {0} {{", context.name.GetText());
          PushIndent();
-         m_writer.WriteLine("export function render({0} : {1}) : string {{", VAR_DataContext, context.contextType.GetText());
+         if (context.contextTypeName == null)
+         {
+            m_writer.WriteLine("export function render() : string {");
+            m_hasDataContext = false;
+         }
+         else
+         {
+            m_writer.WriteLine("export function render({0} : {1}) : string {{", VAR_DataContext, context.contextTypeName.GetText());
+            m_hasDataContext = true;
+         }
          PushIndent();
          m_writer.WriteLine("var {0} : string = '';", VAR_TemplateResult);
          m_symbols.PushScope(context);
@@ -121,6 +131,9 @@ namespace Alphaleonis.Horseshoe.Compiler
 
       public override void EnterSubstitution(HorseshoeParser.SubstitutionContext context)
       {
+         if (!m_hasDataContext)
+            throw new Exception("Substitutions cannot be used without a data context.");
+
          FlushBuffer((context.trimStart != null) ^ m_invertTrim);
          string variableName = GetVariableName(context.id);
          m_writer.WriteLine("{0} += _.escape(String({1}));", VAR_TemplateResult, variableName);
