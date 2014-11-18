@@ -65,7 +65,7 @@ Every template in a Horseshoe document must be enclosed in a `{{#template}}` blo
 {{/template}}
 ```
 
-Where `TemplateName` is the name of the generated class, and `DataContextType` is the type of the input parameter to the generated `render` function.
+Where `TemplateName` is the name of the generated class, and `DataContextType` is the type of the input parameter to the generated `render` function. 
 
 For example the template above would be translated into something like the following:
 ```TypeScript
@@ -75,6 +75,8 @@ class TemplateName {
 	}
 } 
 ```
+
+The `DataContextType` can be omitted if this is a static template that should have no input. In this case substitutions, conditionals etc. cannot be used.
 
 Template blocks must be declared at the top-level or within a `module` block.
 
