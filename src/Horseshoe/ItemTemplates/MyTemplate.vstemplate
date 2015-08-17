@@ -1,0 +1,22 @@
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Item">
+   <TemplateData>
+      <DefaultName>Template.hrs</DefaultName>
+      <Name>Horseshoe Template</Name>
+      <Description>A pre-compiled horseshoe template.</Description>
+      <ProjectType>CSharp</ProjectType>
+      <SortOrder>10</SortOrder>
+      <Icon>__TemplateIcon.png</Icon>
+   </TemplateData>
+   <TemplateContent>
+      <References />
+      <ProjectItem SubType="" TargetFileName="$fileinputname$.hrs" ItemType="None" ReplaceParameters="true" CustomTool="HorseshoeGenerator">Templates.hrs</ProjectItem>
+      <CustomParameters>
+         <CustomParameter Name="$itemproperties$" Value="CustomTool" />
+         <CustomParameter Name="$CustomTool$" Value="HorseshoeGenerator" />
+      </CustomParameters>
+   </TemplateContent>
+   <WizardExtension>
+      <Assembly>Microsoft.VSDesigner, Version=11.0.0.0, Culture=Neutral, PublicKeyToken=b03f5f7f11d50a3a</Assembly>
+      <FullClassName>Microsoft.VSDesigner.ProjectWizard.ItemPropertyWizard</FullClassName>
+   </WizardExtension>
+</VSTemplate>

@@ -1,0 +1,5 @@
+﻿{{#module $safeitemname$}}
+	{{#template Template1 : MyModel}}
+		<div></div>
+	{{/template}}
+{{/module}}
