@@ -41,7 +41,7 @@ elseClause
    ;
 
 listIteration
-   : OPEN openTrimStart=TILDE? HASH FOREACH type=qualifiedIdentifier variable=simpleIdentifier IN collection=scopeQualifiedIdentifier openTrimEnd=TILDE? CLOSE (expression)* OPEN closeTrimStart=TILDE? SLASH FOREACH closeTrimEnd=TILDE? CLOSE
+   : OPEN openTrimStart=TILDE? HASH FOREACH type=typeName variable=simpleIdentifier IN collection=scopeQualifiedIdentifier openTrimEnd=TILDE? CLOSE (expression)* OPEN closeTrimStart=TILDE? SLASH FOREACH closeTrimEnd=TILDE? CLOSE
    ;
 
 invoke
@@ -65,7 +65,7 @@ qualifiedIdentifier
 	;
 
 typeName 
-   : qualifiedIdentifier ('<' typeName '>')? ('[' ']')*
+   : qualifiedIdentifier ('<' typeName (',' typeName)* '>')? ('[' ']')*
    ;
 
 simpleIdentifier
