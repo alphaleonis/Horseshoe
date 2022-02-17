@@ -40,6 +40,7 @@ namespace Alphaleonis.Horseshoe.VSX
          string output;
          try
          {
+            ThreadHelper.ThrowIfNotOnUIThread();
             output = Generate(wszInputFilePath, bstrInputFileContents, wszDefaultNamespace, new ServiceProvider(Site as Microsoft.VisualStudio.OLE.Interop.IServiceProvider).GetService(typeof(ProjectItem)) as ProjectItem, reporter);
          }
          catch (Exception ex)
@@ -100,36 +101,43 @@ namespace Alphaleonis.Horseshoe.VSX
 
          public void GenerateError(string errorMessage)
          {
+            ThreadHelper.ThrowIfNotOnUIThread();
             GenerateError(errorMessage, 0, 0);
          }
 
          public void GenerateError(string errorMessage, int sourceFileLineNumber)
          {
+            ThreadHelper.ThrowIfNotOnUIThread();
             GenerateError(errorMessage, sourceFileLineNumber, 0);
          }
 
          public void GenerateError(string errorMessage, int sourceFileLineNumber, int sourceFileColumnNumber)
          {
+            ThreadHelper.ThrowIfNotOnUIThread();
             m_progress.GeneratorError(0, 0, errorMessage, (uint)sourceFileLineNumber, (uint)sourceFileColumnNumber);
          }
 
          public void GenerateWarning(string errorMessage)
          {
+            ThreadHelper.ThrowIfNotOnUIThread();
             GenerateWarning(errorMessage, 0, 0);
          }
 
          public void GenerateWarning(string errorMessage, int sourceFileLineNumber)
          {
+            ThreadHelper.ThrowIfNotOnUIThread();
             GenerateWarning(errorMessage, sourceFileLineNumber, 0);
          }
 
          public void GenerateWarning(string errorMessage, int sourceFileLineNumber, int sourceFileColumnNumber)
          {
+            ThreadHelper.ThrowIfNotOnUIThread();
             m_progress.GeneratorError(1, 0, errorMessage, (uint)sourceFileLineNumber, (uint)sourceFileColumnNumber);
          }
 
          public void ReportProgress(int currentStep, int totalSteps)
          {
+            ThreadHelper.ThrowIfNotOnUIThread();
             m_progress.Progress((uint)currentStep, (uint)totalSteps);
          }
       }
