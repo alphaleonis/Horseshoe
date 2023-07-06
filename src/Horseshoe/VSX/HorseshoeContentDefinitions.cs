@@ -16,7 +16,8 @@ namespace Alphaleonis.Horseshoe.VSX
 {
    public sealed class HorseshoeContentDefinitions
    {
-      [BaseDefinition("htmlx")]
+      [BaseDefinition("html")]
+      [BaseDefinition("code")]
       [Export(typeof(ContentTypeDefinition))]
       [Name("Horseshoe")]
       public ContentTypeDefinition HorseshoeContentType { get; set; }
